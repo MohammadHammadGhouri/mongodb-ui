@@ -1,5 +1,5 @@
 const getUsers = () => {
-    axios.get('https://hello-world-crud.herokuapp.com/users')
+    axios.get('https://mongodb-database.herokuapp.com/users')
         .then(response => {
             showUsers(response.data);
         })
@@ -48,7 +48,7 @@ const editUserDB = (id, e) => {
     let name = document.getElementById(`${id}-name`).value,
         email = document.getElementById(`${id}-email`).value,
         address = document.getElementById(`${id}-address`).value;
-    axios.put(`https://hello-world-crud.herokuapp.com/user/${id}`, { name, email, address }).then(res => {
+    axios.put(`https://mongodb-database.herokuapp.com/user/${id}`, { name, email, address }).then(res => {
         showMessage("User Updated Successfully");
         getUsers();
     });
@@ -61,7 +61,7 @@ const setUser = () => {
     userName.value = "", email.value = "", address.value = "";
 }
 const submitData = (name, email, address) => {
-    axios.post('https://hello-world-crud.herokuapp.com/user', { name, email, address })
+    axios.post('https://mongodb-database.herokuapp.com/user', { name, email, address })
         .then(response => {
             getUsers();
             showMessage("User Created Successfully");
@@ -71,7 +71,7 @@ const submitData = (name, email, address) => {
         })
 }
 const deleteUser = id => {
-    axios.delete(`https://hello-world-crud.herokuapp.com/user/${id}`).then(() => {
+    axios.delete(`https://mongodb-database.herokuapp.com/user/${id}`).then(() => {
         showMessage("User Deleted Successfully");
         getUsers()
     });
